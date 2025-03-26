@@ -13,18 +13,19 @@ import org.apache.spark.{SparkConf, SparkContext}
 object Spark01_WordCount {
   def main(args: Array[String]): Unit = {
 
+
     val conf = new SparkConf().setMaster("local").setAppName("WordCount")
     val sc = new SparkContext(conf)
-
-    val lines = sc.textFile("data")
-
-    val word = lines.flatMap(_.split(" ")).map(w=>(w,1))
-
-    val wordCount: RDD[(String, Int)] = word.reduceByKey((x, y) => x + y)
-
-    val array: Array[(String, Int)] = wordCount.collect()
-    array.foreach(println)
-
+//
+//    val lines = sc.textFile("data")
+//
+//    val word = lines.flatMap(_.split(" ")).map(w=>(w,1))
+//
+//    val wordCount: RDD[(String, Int)] = word.reduceByKey((x, y) => x + y)
+//
+//    val array: Array[(String, Int)] = wordCount.collect()
+//    array.foreach(println)
+//
     sc.stop()
   }
 
